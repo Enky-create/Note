@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>65314358210-ea23u5ab3o8oga397en3qf4hoqionbbi.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.65314358210-ea23u5ab3o8oga397en3qf4hoqionbbi</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCcm9cdVV5ROQ1JGvOMzSXawh289ExLwo8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>65314358210</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>comkomkov2000.vk.notes</string>
+	<key>PROJECT_ID</key>
+	<string>komkowvadim-motes</string>
+	<key>STORAGE_BUCKET</key>
+	<string>komkowvadim-motes.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:65314358210:ios:0b82ef6b0d79682edd4c5b</string>
+</dict>
+</plist>

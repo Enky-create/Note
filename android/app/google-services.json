@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "65314358210",
+    "project_id": "komkowvadim-motes",
+    "storage_bucket": "komkowvadim-motes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65314358210:android:3f962358c37a92b5dd4c5b",
+        "android_client_info": {
+          "package_name": "comkomkov2000.vk.notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65314358210-kb24l52vr7huip2j7g02ii2pg3aaak1n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBppZGJbAKB9ctRVsGX3ujFV9TYXO6RTLQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65314358210-kb24l52vr7huip2j7g02ii2pg3aaak1n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
