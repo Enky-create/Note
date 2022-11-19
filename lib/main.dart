@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'homepage.dart';
-import 'view/register_view.dart';
-import 'view/login_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
