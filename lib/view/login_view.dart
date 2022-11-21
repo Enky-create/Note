@@ -1,3 +1,5 @@
+import 'dart:developer' as devtools show log;
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +31,7 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login"),
+        title: const Text("Login"),
       ),
       body: Column(
         children: [
@@ -60,19 +62,19 @@ class _LoginViewState extends State<LoginView> {
               } on FirebaseAuthException catch (e) {
                 switch (e.code) {
                   case 'user-not-found':
-                    print("User not found");
+                    devtools.log("User not found");
                     break;
                   case 'wrong-password':
-                    print("wrong password");
+                    devtools.log("wrong password");
                     break;
                   case 'too-many-requests':
-                    print("too many requests");
+                    devtools.log("too many requests");
                     break;
                   default:
-                    print(e.code);
+                    devtools.log(e.code);
                 }
               }
-              print(user);
+              devtools.log(user.toString());
             },
             child: const Text("Login"),
           ),
