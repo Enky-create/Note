@@ -64,19 +64,19 @@ class _LoginViewState extends State<LoginView> {
               } on FirebaseAuthException catch (e) {
                 switch (e.code) {
                   case 'user-not-found':
-                    showErrorDialog(context, "User not found");
+                    await showErrorDialog(context, "User not found");
                     break;
                   case 'wrong-password':
-                    showErrorDialog(context, "Wrong password");
+                    await showErrorDialog(context, "Wrong password");
                     break;
                   case 'too-many-requests':
-                    showErrorDialog(context, "too many requests");
+                    await showErrorDialog(context, "too many requests");
                     break;
                   default:
-                    showErrorDialog(context, e.code);
+                    await showErrorDialog(context, e.code);
                 }
               } catch (e) {
-                showErrorDialog(context, e.toString());
+                await showErrorDialog(context, e.toString());
               }
             },
             child: const Text("Login"),
