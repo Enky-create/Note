@@ -1,6 +1,7 @@
 import 'dart:developer' as devtools show log;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:notes/constants/routes.dart';
 import 'package:notes/menu_action_enum.dart';
 
 class NotesView extends StatefulWidget {
@@ -19,13 +20,18 @@ class _NotesViewState extends State<NotesView> {
         actions: [
           PopupMenuButton(
             onSelected: (value) async {
-              final isLogOut = await _ShowLogOutDialog(context);
-              if (isLogOut) {
-                await FirebaseAuth.instance.signOut();
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil("/login/", (route) => false);
+              switch (value) {
+                case MenuAction.logout:
+                  final isLogOut = await _showLogOutDialog(context);
+                  if (isLogOut) {
+                    await FirebaseAuth.instance.signOut();
+                    // ignore: use_build_context_synchronously
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil(loginRoute, (route) => false);
+                  }
+                  devtools.log("LOGOUT: ${FirebaseAuth.instance.currentUser}");
+                  break;
               }
-              devtools.log("LOGOUT: ${FirebaseAuth.instance.currentUser}");
             },
             itemBuilder: (context) {
               return const [
@@ -44,7 +50,7 @@ class _NotesViewState extends State<NotesView> {
     );
   }
 
-  Future<bool> _ShowLogOutDialog(BuildContext context) {
+  Future<bool> _showLogOutDialog(BuildContext context) {
     return showDialog<bool>(
         context: context,
         builder: (context) {
