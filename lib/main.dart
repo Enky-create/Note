@@ -3,6 +3,7 @@ import 'package:notes/constants/routes.dart';
 import 'package:notes/view/login_view.dart';
 import 'package:notes/view/notes_view.dart';
 import 'package:notes/view/register_view.dart';
+import 'package:notes/view/verify_email_view.dart';
 import 'homepage.dart';
 
 void main() {
@@ -18,6 +19,7 @@ void main() {
         registerRoute: (context) => const RegisterView(),
         loginRoute: (context) => const LoginView(),
         notesRoute: (context) => const NotesView(),
+        verifyEmailRoute: (context) => const VerifyEmailView(),
       },
     ),
   );

@@ -1,8 +1,7 @@
-import 'dart:developer' as devtools show log;
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:notes/constants/routes.dart';
+import 'package:notes/utilities/show_error_dialog.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -56,30 +55,33 @@ class _RegisterViewState extends State<RegisterView> {
           ),
           TextButton(
             onPressed: () async {
-              late final UserCredential user;
               try {
-                user = await FirebaseAuth.instance
-                    .createUserWithEmailAndPassword(
-                        email: _email.text, password: _password.text);
+                await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                    email: _email.text, password: _password.text);
+                final user = FirebaseAuth.instance.currentUser;
+                await user?.sendEmailVerification();
+                // ignore: use_build_context_synchronously
+                Navigator.of(context).pushNamed(verifyEmailRoute);
               } on FirebaseAuthException catch (e) {
                 switch (e.code) {
                   case 'weak-password':
-                    devtools.log("Weak password");
+                    showErrorDialog(context, "Weak password");
                     break;
                   case 'email-already-in-use':
-                    devtools.log("Email already in use");
+                    showErrorDialog(context, "Email already in use");
                     break;
                   case 'invalid-email':
-                    devtools.log("Invalid email");
+                    showErrorDialog(context, "Invalid email");
                     break;
                   case 'too-many-requests':
-                    devtools.log("too many requests");
+                    showErrorDialog(context, "too many requests");
                     break;
                   default:
-                    devtools.log(e.code);
+                    showErrorDialog(context, e.code);
                 }
+              } catch (e) {
+                showErrorDialog(context, e.toString());
               }
-              devtools.log(user.toString());
             },
             child: const Text("Register"),
           ),
