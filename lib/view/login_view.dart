@@ -1,8 +1,7 @@
-import 'dart:developer' as devtools show log;
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:notes/constants/routes.dart';
+import 'package:notes/utilities/show_error_dialog.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -59,22 +58,25 @@ class _LoginViewState extends State<LoginView> {
               try {
                 await FirebaseAuth.instance.signInWithEmailAndPassword(
                     email: _email.text, password: _password.text);
+                // ignore: use_build_context_synchronously
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil(notesRoute, (route) => false);
               } on FirebaseAuthException catch (e) {
                 switch (e.code) {
                   case 'user-not-found':
-                    devtools.log("User not found");
+                    showErrorDialog(context, "User not found");
                     break;
                   case 'wrong-password':
-                    devtools.log("wrong password");
+                    showErrorDialog(context, "Wrong password");
                     break;
                   case 'too-many-requests':
-                    devtools.log("too many requests");
+                    showErrorDialog(context, "too many requests");
                     break;
                   default:
-                    devtools.log(e.code);
+                    showErrorDialog(context, e.code);
                 }
+              } catch (e) {
+                showErrorDialog(context, e.toString());
               }
             },
             child: const Text("Login"),

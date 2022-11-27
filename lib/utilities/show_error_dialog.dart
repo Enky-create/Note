@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
-Future<void> showErrorDialog(BuildContext context, String text) {
+Future<void> showErrorDialog(
+  BuildContext context,
+  String text,
+) {
   return showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
         title: Text(text),
-        content: Text("An error has accured: $text"),
+        content: Text("An error has occurred: $text"),
         actions: [
           TextButton(
             onPressed: () {
