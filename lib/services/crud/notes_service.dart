@@ -13,6 +13,18 @@ class NotesService {
   final _notesStreamController =
       StreamController<List<DatabaseNote>>.broadcast();
 
+  Future<DatabaseUser> getOrCreateUser({required String email}) async {
+    try {
+      final user = getUser(email: email);
+      return user;
+    } on CouldNotFindUser {
+      final createdUser = createUser(email: email);
+      return createdUser;
+    } catch (_) {
+      rethrow;
+    }
+  }
+
   Future<void> _cacheNotes() async {
     final notes = await getAllNotes();
     _notes = notes.toList();
