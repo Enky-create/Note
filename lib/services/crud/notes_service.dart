@@ -14,6 +14,7 @@ class NotesService {
       StreamController<List<DatabaseNote>>.broadcast();
   Stream<List<DatabaseNote>> get allNotes => _notesStreamController.stream;
 
+  //Singleton pattern
   static final NotesService _shared = NotesService._sharedInstance();
   NotesService._sharedInstance();
   factory NotesService() => _shared;
