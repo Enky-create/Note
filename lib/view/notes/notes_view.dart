@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:notes/constants/routes.dart';
 import 'package:notes/enums/menu_action_enum.dart';
 import 'package:notes/services/auth/auth_service.dart';
+import 'package:notes/services/crud/crud_database_note.dart';
 import 'package:notes/services/crud/notes_service.dart';
 
 class NotesView extends StatefulWidget {
@@ -20,12 +21,6 @@ class _NotesViewState extends State<NotesView> {
   void initState() {
     _notesService = NotesService();
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    _notesService.close();
-    super.dispose();
   }
 
   @override
@@ -76,7 +71,24 @@ class _NotesViewState extends State<NotesView> {
                       switch (snapshot.connectionState) {
                         case ConnectionState.waiting:
                         case ConnectionState.active:
-                          return const Text('waiting for notes');
+                          if (snapshot.hasData) {
+                            final notes = snapshot.data as List<DatabaseNote>;
+                            return ListView.builder(
+                                itemCount: notes.length,
+                                itemBuilder: ((context, index) {
+                                  final note = notes[index];
+                                  return ListTile(
+                                    title: Text(
+                                      note.text,
+                                      softWrap: true,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  );
+                                }));
+                          } else {
+                            return const CircularProgressIndicator();
+                          }
                         default:
                           return Column(
                             children: const [
