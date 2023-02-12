@@ -55,7 +55,7 @@ class _NewNoteViewState extends State<NewNoteView> {
     }
   }
 
-  void _safeNoteIfTextIsNotEmty() async {
+  void _safeNoteIfTextIsNotEmpty() async {
     final note = _note;
     final text = _textController.text;
     if (note != null && text.isNotEmpty) {
@@ -66,7 +66,7 @@ class _NewNoteViewState extends State<NewNoteView> {
   @override
   void dispose() {
     _deleteNoteIfTextIsEmpty();
-    _safeNoteIfTextIsNotEmty();
+    _safeNoteIfTextIsNotEmpty();
     _textController.dispose();
     super.dispose();
   }
