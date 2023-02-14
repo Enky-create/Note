@@ -124,7 +124,7 @@ class NotesService {
     await _ensureDbIsOpened();
     final db = _getDatabase();
     await getNote(id: note.id);
-    db.update(
+    await db.update(
       noteTable,
       {
         textColumn: text,
