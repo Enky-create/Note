@@ -79,8 +79,8 @@ class _NotesViewState extends State<NotesView> {
                             final notes = snapshot.data as List<DatabaseNote>;
                             return NotesListView(
                               notes: notes,
-                              onDeleteNote: (note) {
-                                _notesService.deleteNote(id: note.id);
+                              onDeleteNote: (note) async {
+                                await _notesService.deleteNote(id: note.id);
                               },
                               onUpdateNote: (note) {
                                 Navigator.of(context).pushNamed(
