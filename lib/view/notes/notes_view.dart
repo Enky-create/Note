@@ -5,7 +5,6 @@ import 'package:notes/enums/menu_action_enum.dart';
 import 'package:notes/services/auth/auth_service.dart';
 import 'package:notes/services/cloud/cloud_firebase_storage.dart';
 import 'package:notes/services/cloud/cloud_storage_note.dart';
-import 'package:notes/services/crud/crud_database_note.dart';
 import 'package:notes/view/notes/notes_list_view.dart';
 
 import '../../utilities/dialogs/logout_dialog.dart';
