@@ -1,2 +1,2 @@
-const ownerUserIDFieldName = "user_id";
-const textFieldName = "text";
+const String textFieldName = 'text';
+const String ownerUserIdFieldName = 'user_id';
